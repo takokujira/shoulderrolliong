@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <style>
+            body{
+                font-size: 40px;
+                font-family: 'メイリオ';
+            }
+            input.box{width:75%;height:50px;
+                font-size: 40px;border-width: 3px;
+                border-radius: 10px;
+            }
+            input.push{
+                width:50%;height:75px;
+                text-align:center;font-size: 40px;
+                border-width: 3px;
+                background: black;color: white;
+                border-radius: 30px;
+            }
+            .push:active{
+                background: white;
+                color: black;
+            }
+            .blank{font-size: 5px;}
+            .center{text-align:center;}
+        </style>
+        <script>
+            function AnswerCheck() //val は 入力された答え、ans は正解
+            {
+                const ans = "答え";
+                const textbox = document.getElementById('youranswer')
+                const val = textbox.value
+
+                if (val == ""){//もし、回答が入力されていない場合
+                    const message = "答えを入力してください";    //メッセージを取得
+                    document.getElementById('output').textContent = message;
+                    return false;    //本来の動作をキャンセル
+                }
+                else if(val == ans){//もし、回答と正解が同じ場合
+                    const message = "スタンプを入手した";    //メッセージを取得
+                    document.getElementById('output').textContent = message;
+                    var img = document.getElementById("stamp");
+                    img.src = "https://lh3.googleusercontent.com/pw/AP1GczPYuKhaFV5DkHOx0J1ldKJ_vw-fbVwwE9Lcj0UB2ubkWjF85lAMyIEGPHjlvA-slcklp54-ICEMge_Wyk0G2jKq9mVsL9OC2efsYsdXi58EX-J4o1HlmZWO1VDx1lyilyVyDgP_MusAVVUBwFixOaKuYqkZrTWkJ7px5AhgYexbm2kmsVtECxN4aNmuh5f41J9MvzZ33NSdZbtE94pWJbU0RJ3wDczQPIiI5yrNRQG-FiB8daFVzV9MUyomH31upWcw0zclSB7ra9l5J57wwt5yxbnRLJdjZ3Nla8uwNs-cFi-cUN4muhGHFdCprzI3NIHU6sS9bjthYt416S_xkSUrDJ6lsmMHI4Hv8xFwdafk-swrfVrQgNgYyue7hxP-eYxeMw2OnEABkL9iZvrbla6uMMHYcNx3VFb2MQnKFsvyuiLhLyuTkkPUPxn0Xe8wZiKNKQ2DaRqrw4tzDmbCt7-XekIVSfm57quFu02gpa0fZPrnmDSHUq1D5Pdog_N94NYWxet4j1xVeCNXDSMzmKz13Fg2a0k-PSXjYSBN53PjzgIzxXPqVRSPuohrsoveWu-I__m-3kS6eJEzCjCN37WGwzDupkuKHvRZbr7_Ux-SkCb2dhQc644-hQA418bcBNo4hHTZTa12LuBu5NmsfaRxJqcUvTV5SK1S66nb1auTB4kEF6w2XBXGQXxrqZsRGrtfTa1sZNrCDOOpXmmuikPhhbxLo0pXkhiidkieP2Gp92ctLSEkjcpcJ0__Rq1DD1o4zf2ZTQM7MM2dqKNI2o4RfZf_dutj0NfMWzJ2Utik2DNXIj63Ulx6iZn45ZatrfhJk9rolb2Lp-ACLlfuyj513E34MeSLnyfUriMuUlr7bfNqLoQbGyGPUkKGFvo61CrG7_NKpoxzggM1eFWzKYrpFA=w400-h400-s-no-gm?authuser=0";
+                    return false;    //本来の動作をキャンセル
+                }
+                else{//上の２つ以外場合
+                    const message = "答えが違います";   //不正解メッセージを取得
+                    document.getElementById('output').textContent = message;
+                    return false;    //本来の動作をキャンセル
+                }
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <div class="code">
+            <div class="center">
+                <form action="javascript:AnswerCheck()">
+                    <input type="text" id="youranswer" placeholder="答えを入力"  class="box">
+                    <p class="blank"></p>
+                    <input type="button" onclick="AnswerCheck()" value="解答" class="push">
+                </form>
+                <p id="output"></p>
+                <img id="stamp"src=""/>
+            </div>
+        </div>
+    </body>
+</html>
